@@ -6,7 +6,6 @@ let first = true;
 let numSums = [];
 let currentNum = 1;
 let t = 1;
-
 function listNumbers(array, num) {
     let i = 0;
     for (i = 0; i < num;) {
@@ -16,10 +15,11 @@ function listNumbers(array, num) {
     array.push(i);
 };
 
-function maxPow(num, i) {
+export function maxPow(num, i) {
     if (num === Math.pow(2, i)) {
         max = Math.pow(2, i);
         exponent = i;
+        return i;
     } else if (num > Math.pow(2, i)) {
         i++;
         maxPow(num, i);
@@ -27,8 +27,9 @@ function maxPow(num, i) {
         i = i - 1;
         max = Math.pow(2, i);
         exponent = i;
+        return i;
     }
-};
+}
 
 function getNumSum(num, array) {
     if (first) {
@@ -70,7 +71,7 @@ function makeArray(resultArray, sourceArray, num) {
     }
 }
 
-function makeSlides(num) {
+export function makeSlides(num) {
     if (first) {
         sessionStorage.clear();
         makeArray(numSums, array, num);
@@ -100,7 +101,7 @@ function makeSlides(num) {
     } while (t < numSums.length);
 }
 
-function addMoreNums() {
+export function addMoreNums() {
     if (typeof numSums[t + 1] === 'number') {
         t++;
         if (sessionStorage.getItem(JSON.stringify(numSums[t]))) {
@@ -116,7 +117,4 @@ function addMoreNums() {
     } else {
         return;
     }
-
 }
-export default makeSlides;
-

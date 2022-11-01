@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NumberPrediction</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+    </style>
+</head>
+<body>
+    <div id = "ui">
+    <input type="text" placeholder="Enter desired number range" id="text">
+    <input type="button" value="Generate" id="generate" class="button">
+    <script src="questions.js" type="module"></script>
+    </div>
+    <br>
+    <br>
+    <div id="container">
+        <div id="slide-container"></div>
+        <p>Is the number you thought of one of these numbers?</p>
+        <input type="button" value="Yes" id ="yes"class="button">
+        <input type="button" value="No" id ="no"class="button">
+    </div>
+</body>
+</html>
