@@ -1,36 +1,29 @@
-import { makeSlides, addMoreNums ,maxPow} from './index.js'
-let button = document.getElementById('generate')
+import { makeSlides, addMoreNums, maxPow } from './index.js'
+
+let i = 0;
+let t = 0;
+let number = 0
+let ready = false
+let exponent = 0; let button = document.getElementById('generate')
 let yesbutton = document.getElementById('yes')
 let nobutton = document.getElementById('no')
-let i = 0;
 let textbox = document.getElementById('text')
 let container = document.getElementById('container')
 let slideContainer = document.getElementById('slide-container')
-let number = 0
+let ui = document.getElementById('ui')
+let preview = document.getElementById('preview')
+let status = document.getElementById('status')
+
+
+setInterval(updatePreview, 500)
 button.addEventListener('click', () => {
     if (typeof eval(textbox.value) === 'number') {
-        /*
-        '
-        makeSlides(eval(textbox.value));
-        for (i = 0; i < sessionStorage.length;) {
-            let newSlide = container.appendChild(document.createElement('div'));
-            newSlide.setAttribute('id', JSON.stringify(Math.pow(2, i)));
-            newSlide.setAttribute('class', 'slide')
-            i++;
-        };
-        for (i = 0; i < sessionStorage.length;) {
-            let array = JSON.parse(sessionStorage.getItem(JSON.stringify(Math.pow(2, i))));
-            let slide = document.getElementById(JSON.stringify(Math.pow(2, i)))
-            for (let a = 0; a < array.length;) {
-                let newNumber = slide.appendChild(document.createElement('div'))
-                newNumber.innerHTML = array[a] + ', ';
-                a++;
-            }
-            i++;
-        */
         sessionStorage.clear()
         makeSlides(eval(textbox.value));
-        displaySlide(i)
+        status.innerHTML =`Question ${i + 1} of ${sessionStorage.length}`
+        displaySlide()
+        i++;
+        console.log(i)
         container.style.visibility = 'visible'
         button.setAttribute('disabled', 'disabled');
     } else {
@@ -40,22 +33,37 @@ button.addEventListener('click', () => {
 
 })
 yesbutton.addEventListener('click', () => {
-    number = number + Math.pow(2, i)
-    if (i+1< sessionStorage.length) {
+    if (i < sessionStorage.length) {
+        status.innerHTML = `Question ${i+1} of ${sessionStorage.length}`
         slideContainer.innerHTML = ''
+        displaySlide()
+        number = number + Math.pow(2, i - 1);
         console.log(number)
+        console.log(i)
+        console.log(sessionStorage.length)
         i++;
-        displaySlide(i)
+
     } else {
+        number = number + Math.pow(2, i - 1);
+        container.removeChild(document.getElementById('question'))
+        ui.innerHTML = ''
+        slideContainer.innerHTML = ''
         showResult()
     }
 })
 nobutton.addEventListener('click', () => {
-    if (i+1< sessionStorage.length) {
+    if (i < sessionStorage.length) {
+        status.innerHTML = `Question ${i} of ${sessionStorage.length}`
         slideContainer.innerHTML = ''
+        displaySlide()
+        console.log(number)
+        console.log(i)
+        console.log(sessionStorage.length)
         i++;
-        displaySlide(i)
     } else {
+        container.removeChild(document.getElementById('question'))
+        ui.innerHTML = ''
+        slideContainer.innerHTML = ''
         showResult()
     }
 
@@ -80,7 +88,27 @@ function showResult() {
     let result = document.createElement('p')
     result.setAttribute('class', 'result')
     result.innerHTML = `Your Number is ${number}!`
+    container.removeChild(status)
     container.removeChild(yesbutton)
     container.removeChild(nobutton)
     container.appendChild(result)
+}
+function getPreview(num) {
+    if (num === Math.pow(2, t)) {
+        exponent = t;
+        ready = true;
+    } else if (num > Math.pow(2, t)) {
+        t++;
+        maxPow(num);
+    } else if (num < Math.pow(2, t)) {
+        t = t - 1;
+        exponent = t;
+        ready = true
+    }
+}
+function updatePreview() {
+    getPreview(eval(textbox.value))
+    if (ready) {
+        preview.innerHTML = JSON.stringify(exponent + 1)
+    }
 }

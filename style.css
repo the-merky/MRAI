@@ -5,6 +5,19 @@
     font-family: 'Roboto Mono', monospace;
     display: flex;
     justify-content: center;
+
+}
+p:hover{
+    color: #1cbaac;
+}
+p{
+    transition: 0.3s;
+}
+span{
+    transition: 0.3s;
+}
+span:hover{
+    scale: 1.1;
 }
 #text{
     font-size: 1.5rem;
@@ -40,10 +53,16 @@
     font-weight: 400;
     font-size: 1em;
     cursor: pointer;
+    transition: 0.3s;
 }
 .button:hover{
+    scale: 1.02;
     color: #0e1a29;
     background-color: #1cbaac;
+}
+.button:active{
+    scale: 1.05;
+
 }
 #ui{
     display: flex;
@@ -61,4 +80,12 @@
 }
 #preview:hover{
     background-color: #1cbaac;
+}
+#help{
+    cursor: default;
+    color: #1cbaac;
+    font-size: 1rem;
+}
+#preview-text{
+    padding-left: 2rem;
 }
