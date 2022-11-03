@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
-:root{
+
+:root {
     background-color: #132237;
     color: #ebb723;
     font-family: 'Roboto Mono', monospace;
@@ -7,19 +8,27 @@
     justify-content: center;
 
 }
-p:hover{
+h1{
+    font-size: 5rem;
+}
+p:hover {
     color: #1cbaac;
 }
-p{
+
+p {
+    cursor: default;
     transition: 0.3s;
 }
-span{
+
+span {
     transition: 0.3s;
 }
-span:hover{
+
+span:hover {
     scale: 1.1;
 }
-#text{
+
+#text {
     font-size: 1.5rem;
     font-family: 'Roboto Mono', monospace;
     background-color: #132237;
@@ -27,65 +36,149 @@ span:hover{
     border-style: none;
     align-self: center;
 }
-#text:focus{
+
+#text:focus {
     outline: none;
 }
-#text::placeholder{
+
+#text::placeholder {
     color: #1cbaac;
     font-size: 1rem;
 }
-#container{
-    visibility:hidden;
+
+#container {
+    visibility: hidden;
 }
-.slide{
+
+.slide {
     display: flex;
     flex-direction: row;
 }
+
 .button {
     border-radius: 0.5rem;
     border-style: none;
-    background-color:#ebb723;
+    background-color: #ebb723;
     color: #0e1a29;
     padding: .5em;
     text-align: center;
-    height:3rem;
+    height: 3rem;
     width: 12rem;
     font-weight: 400;
     font-size: 1em;
     cursor: pointer;
     transition: 0.3s;
 }
-.button:hover{
+
+.button:hover {
     scale: 1.02;
     color: #0e1a29;
     background-color: #1cbaac;
 }
-.button:active{
+
+.button:active {
     scale: 1.05;
 
 }
-#ui{
+.result{
+    font-size: 7rem;
+}
+#ui {
     display: flex;
     flex-direction: row;
 }
-#preview{
+
+#preview {
     padding-left: 4px;
     padding-right: 4px;
     padding-top: 0px;
     padding-bottom: 0px;
-    background-color:#ebb723;
+    background-color: #ebb723;
     color: #0e1a29;
     border-radius: 0.3rem;
     cursor: pointer;
 }
-#preview:hover{
+
+#preview:hover {
     background-color: #1cbaac;
 }
-#help{
+
+#help {
     cursor: default;
     color: #1cbaac;
     font-size: 1rem;
 }
-#preview-text{
+
+#preview-text {
     padding-left: 2rem;
+}
+
+#slide-container {
+    width: fit-content;
+    height: fit-content;
+    font-size: 1rem;
+}
+
+#status {
+    font-size: 1rem;
+}
+
+#question {
+    font-size: 1rem;
+}
+.w3rcontainer {
+    border: 1px solid #cccfdb;
+    border-radius: 2px;
+}
+
+.nav {
+    display: inline-block;
+    position: relative;
+    color: #0087ca;
+}
+
+.nav:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.nav:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.w3rcontainer{
+   border: 1px solid #cccfdb;
+   border-radius: 2px;
+} 
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #ebb723;
+  font-size: 1.5rem;
+}
+
+.hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ebb723;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }

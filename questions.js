@@ -75,7 +75,7 @@ function displaySlide() {
     newSlide.setAttribute('class', 'slide')
     let array = JSON.parse(sessionStorage.getItem(JSON.stringify(Math.pow(2, i))));
     for (let a = 0; a < array.length;) {
-        let newNumber = newSlide.appendChild(document.createElement('div'))
+        let newNumber = newSlide.appendChild(document.createElement('p'))
         if (a + 1 < array.length) {
             newNumber.innerHTML = array[a] + ', ';
         } else {
@@ -92,6 +92,8 @@ function showResult() {
     container.removeChild(yesbutton)
     container.removeChild(nobutton)
     container.appendChild(result)
+    document.getElementById('homepage-text').innerHTML = ''
+    let backToHome= container.appendChild(document.cre)
 }
 function getPreview(num) {
     if (num === Math.pow(2, t)) {
